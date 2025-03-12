@@ -15,55 +15,55 @@ const categories = [
 const products = [
   {
     id: 1,
-    name: 'Heritage Red Rice',
+    name: 'Sona Masoori Rice',
     category: 'Heritage Grains',
-    price: 12.99,
-    image: '/images/red-rice.jpg',
-    description: 'Hand-harvested heritage rice from Tamil Nadu, rich in nutrients and tradition.',
+    price: 14.99,
+    image: '/images/organic-rice.jpeg',
+    description: 'Premium organic Sona Masoori rice sourced from traditional farmers, rich in nutrients and authentic flavor.',
     weight: '1 kg',
-    farmer: 'Lakshmi Devi',
+    farmer: 'Traditional Farmers Collective',
     origin: 'Tamil Nadu',
     certification: 'Organic Certified',
-    impact: 'Supports 12 farming families'
+    impact: 'Supports sustainable farming practices'
   },
   {
     id: 2,
-    name: 'Golden Turmeric Blend',
-    category: 'Ayurvedic Teas',
-    price: 18.99,
-    image: '/images/turmeric-tea.jpg',
-    description: 'A sacred blend of organic turmeric, ginger, black pepper, and holy basil.',
-    weight: '100g',
-    farmer: 'Rajesh Kumar',
-    origin: 'Kerala',
+    name: 'Basmati Rice',
+    category: 'Heritage Grains',
+    price: 19.99,
+    image: '/images/ayurvedic-tea.jpeg',
+    description: 'Premium quality Basmati rice with traditional aroma and authentic taste.',
+    weight: '1 kg',
+    farmer: 'Himalayan Farmers Collective',
+    origin: 'Uttarakhand',
     certification: 'Fair Trade & Organic',
-    impact: 'Preserves traditional farming'
+    impact: 'Preserves traditional farming methods'
   },
   {
     id: 3,
-    name: 'Sacred Spice Collection',
-    category: 'Sacred Spices',
-    price: 45.99,
-    image: '/images/spice-box.jpg',
-    description: 'Seven sacred spices in a handcrafted brass spice box, celebrating ancient wisdom.',
-    items: '7 spices',
-    farmer: 'Artisan Collective',
-    origin: 'Rajasthan',
+    name: 'Basmati Rice Gold',
+    category: 'Heritage Grains',
+    price: 29.99,
+    image: '/images/organic-spices.jpeg',
+    description: 'Premium golden Basmati rice, aged for perfect texture and aroma.',
+    weight: '1 kg',
+    farmer: 'Traditional Rice Artisans',
+    origin: 'North India',
     certification: 'Organic & Sustainable',
-    impact: 'Supports artisan families'
+    impact: 'Supports traditional rice farmers'
   },
   {
     id: 4,
-    name: 'Morning Ritual Kit',
-    category: 'Wellness Kits',
-    price: 65.99,
-    image: '/images/ritual-kit.jpg',
-    description: 'Complete morning ritual kit with copper tongue scraper, neti pot, and meditation essentials.',
-    items: '5 pieces',
-    artisan: 'Traditional Craftsmen',
-    origin: 'Uttar Pradesh',
-    certification: 'Authentic Craftsmanship',
-    impact: 'Preserves ancient practices'
+    name: 'Aged Crop Sona Masoori',
+    category: 'Heritage Grains',
+    price: 24.99,
+    image: '/images/organic-ghee.jpeg',
+    description: 'Aged crop Sona Masoori rice, carefully preserved for enhanced taste and texture.',
+    weight: '1 kg',
+    farmer: 'Traditional Rice Craftsmen',
+    origin: 'South India',
+    certification: 'Organic Certified',
+    impact: 'Supports indigenous farming practices'
   }
 ];
 
@@ -87,17 +87,25 @@ export default function Products() {
             playsInline
             controls={false}
             poster="/images/AdobeStock_273577993.jpeg"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-50"
             onError={(e) => {
               console.error('Video error:', e);
               const video = e.target as HTMLVideoElement;
               console.log('Video error code:', video.error?.code);
               console.log('Video error message:', video.error?.message);
+              // If MP4 fails, try MOV as fallback
+              if (video.error && !video.src.includes('.mov')) {
+                video.src = "https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov";
+              }
             }}
           >
             <source 
               src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_688777865.mp4" 
               type="video/mp4"
+            />
+            <source 
+              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
+              type="video/quicktime"
             />
             Your browser does not support the video tag.
           </video>
