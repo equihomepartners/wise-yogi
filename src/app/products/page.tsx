@@ -93,18 +93,14 @@ export default function Products() {
               const video = e.target as HTMLVideoElement;
               console.log('Video error code:', video.error?.code);
               console.log('Video error message:', video.error?.message);
-              // If MP4 fails, try MOV as fallback
-              if (video.error && !video.src.includes('.mov')) {
-                video.src = "https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov";
-              }
             }}
           >
             <source 
-              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_688777865.mp4" 
+              src={`/.netlify/blobs/videos/AdobeStock_688777865.mp4`}
               type="video/mp4"
             />
             <source 
-              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
+              src={`/.netlify/blobs/videos/AdobeStock_679597740.mov`}
               type="video/quicktime"
             />
             Your browser does not support the video tag.
