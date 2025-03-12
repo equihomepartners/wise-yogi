@@ -310,8 +310,8 @@ const AnimatedSections = () => {
                 <div className="group relative">
                   <div className="relative h-80 rounded-xl overflow-hidden">
                     <Image
-                      src="/images/Firefly traditional indian organic grains hyper realistic ultra real photo realism 87419.jpg"
-                      alt="Traditional Indian organic grains"
+                      src="/images/organic-rice.jpeg"
+                      alt="Traditional organic rice"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -319,8 +319,8 @@ const AnimatedSections = () => {
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-white text-center p-4">
-                          <h4 className="text-lg font-serif mb-2">Organic Grains</h4>
-                          <p className="text-sm">Premium quality, traditionally harvested</p>
+                          <h4 className="text-lg font-serif mb-2">Heritage Rice</h4>
+                          <p className="text-sm">Premium organic rice, traditionally cultivated</p>
                         </div>
                       </div>
                     </div>
@@ -331,8 +331,8 @@ const AnimatedSections = () => {
                 <div className="group relative">
                   <div className="relative h-80 rounded-xl overflow-hidden">
                     <Image
-                      src="/images/Firefly traditional indian ayurvedic powders hyper realistic ultra real photo realism 11472.jpg"
-                      alt="Traditional Indian Ayurvedic powders"
+                      src="/images/organic-spices.jpeg"
+                      alt="Traditional organic spices"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -340,8 +340,8 @@ const AnimatedSections = () => {
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-white text-center p-4">
-                          <h4 className="text-lg font-serif mb-2">Ayurvedic Powders</h4>
-                          <p className="text-sm">Ancient wisdom for modern wellness</p>
+                          <h4 className="text-lg font-serif mb-2">Sacred Spices</h4>
+                          <p className="text-sm">Hand-picked and sustainably sourced</p>
                         </div>
                       </div>
                     </div>
@@ -352,8 +352,8 @@ const AnimatedSections = () => {
                 <div className="group relative">
                   <div className="relative h-80 rounded-xl overflow-hidden">
                     <Image
-                      src="/images/Firefly traditional indian ghee hyper realistic ultra real photo realism 87419.jpg"
-                      alt="Traditional Indian ghee"
+                      src="/images/organic-ghee.jpeg"
+                      alt="Traditional organic ghee"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -373,8 +373,8 @@ const AnimatedSections = () => {
                 <div className="group relative">
                   <div className="relative h-80 rounded-xl overflow-hidden">
                     <Image
-                      src="/images/Firefly traditional indian naan packaged hyper realistic ultra real photo realism 87419.jpg"
-                      alt="Traditional Indian naan bread"
+                      src="/images/ayurvedic-tea.jpeg"
+                      alt="Traditional Ayurvedic tea"
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -382,8 +382,8 @@ const AnimatedSections = () => {
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-white text-center p-4">
-                          <h4 className="text-lg font-serif mb-2">Traditional Naan</h4>
-                          <p className="text-sm">Authentic taste, modern convenience</p>
+                          <h4 className="text-lg font-serif mb-2">Ayurvedic Tea</h4>
+                          <p className="text-sm">Ancient wellness in every cup</p>
                         </div>
                       </div>
                     </div>

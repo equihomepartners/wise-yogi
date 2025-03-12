@@ -5,10 +5,14 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  assetPrefix: '/',
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mov|mp4)$/i,
-      type: 'asset/resource'
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name][ext]'
+      }
     });
     return config;
   }
