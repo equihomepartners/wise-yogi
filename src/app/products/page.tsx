@@ -96,7 +96,7 @@ export default function Products() {
             }}
           >
             <source 
-              src="/images/AdobeStock_688777865.mp4" 
+              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_688777865.mp4" 
               type="video/mp4"
             />
             Your browser does not support the video tag.

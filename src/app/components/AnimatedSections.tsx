@@ -19,15 +19,15 @@ const AnimatedSections = () => {
             onError={(e) => console.error('Video error:', e)}
           >
             <source 
-              src="/images/AdobeStock_679597740.mov" 
+              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
               type="video/mov"
             />
             <source 
-              src="/images/AdobeStock_679597740.mov" 
+              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
               type="video/quicktime"
             />
             <source 
-              src="/images/AdobeStock_679597740.mov" 
+              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
               type="video/mp4"
             />
             Your browser does not support the video tag.
