@@ -96,11 +96,11 @@ export default function Products() {
             }}
           >
             <source 
-              src={`/.netlify/blobs/videos/AdobeStock_688777865.mp4`}
+              src="/images/AdobeStock_688777865.mp4"
               type="video/mp4"
             />
             <source 
-              src={`/.netlify/blobs/videos/AdobeStock_679597740.mov`}
+              src="/images/AdobeStock_679597740.mov"
               type="video/quicktime"
             />
             Your browser does not support the video tag.
