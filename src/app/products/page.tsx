@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { CldVideoPlayer } from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
 
 const categories = [
   'All Products',
@@ -79,33 +81,20 @@ export default function Products() {
     <div className="min-h-screen bg-[#F5E6D3]">
       {/* Hero Section */}
       <div className="relative h-[60vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls={false}
-            poster="/images/AdobeStock_273577993.jpeg"
-            className="w-full h-full object-cover"
-            onLoadStart={() => console.log('Video load started')}
-            onLoadedData={() => console.log('Video data loaded')}
-            onPlay={() => console.log('Video started playing')}
-            onError={(e) => {
-              console.error('Video error:', e);
-              const video = e.target as HTMLVideoElement;
-              console.log('Video error code:', video.error?.code);
-              console.log('Video error message:', video.error?.message);
-              console.log('Video current src:', video.currentSrc);
-            }}
-          >
-            <source 
-              src="/images/AdobeStock_688777865-compressed.mp4"
-              type="video/mp4"
-              onError={(e) => console.error('Source 1 error:', e)}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="relative w-full h-full">
+            <CldVideoPlayer
+              src="AdobeStock_688777865_kdmove"
+              width="1920"
+              height="1080"
+              autoplay={true}
+              loop={true}
+              muted={true}
+              className="absolute inset-0 w-full h-full object-cover !h-[60vh]"
+              controls={false}
             />
-            Your browser does not support the video tag.
-          </video>
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
         </div>
         <div className="relative h-full flex items-center justify-center">
           <div className="text-center max-w-4xl mx-auto px-4">

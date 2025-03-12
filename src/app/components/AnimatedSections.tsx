@@ -2,42 +2,30 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { CldVideoPlayer } from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
 
 const AnimatedSections = () => {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative min-h-screen">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls={false}
-            className="w-full h-full object-cover"
-            poster="/images/AdobeStock_273577993.jpeg"
-            onLoadStart={() => console.log('Video load started')}
-            onLoadedData={() => console.log('Video data loaded')}
-            onPlay={() => console.log('Video started playing')}
-            onError={(e) => {
-              console.error('Video error:', e);
-              const video = e.target as HTMLVideoElement;
-              console.log('Video error code:', video.error?.code);
-              console.log('Video error message:', video.error?.message);
-              console.log('Video current src:', video.currentSrc);
-            }}
-          >
-            <source 
-              src="/images/AdobeStock_679597740-compressed.mp4"
-              type="video/mp4"
-              onError={(e) => console.error('Source error:', e)}
+      <div className="relative h-screen w-full">
+        <div className="absolute inset-0 w-full h-full">
+          <div className="relative w-full h-full">
+            <CldVideoPlayer
+              src="AdobeStock_679597740_compressed_99mb_hcljnt"
+              width="1920"
+              height="1080"
+              autoplay={true}
+              loop={true}
+              muted={true}
+              className="absolute inset-0 w-full h-full object-cover"
+              controls={false}
             />
-            Your browser does not support the video tag.
-          </video>
-          <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
         </div>
-        <div className="relative flex items-center justify-center min-h-screen">
+        <div className="relative h-full flex items-center justify-center">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h1 className="text-white text-6xl font-serif font-bold mb-8 drop-shadow-lg">
               Honoring the Hands<br />That Feed Us
