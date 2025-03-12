@@ -79,7 +79,7 @@ export default function Products() {
     <div className="min-h-screen bg-[#F5E6D3]">
       {/* Hero Section */}
       <div className="relative h-[60vh] overflow-hidden">
-        <div className="absolute inset-0 bg-[#2F4F2F]">
+        <div className="absolute inset-0">
           <video
             autoPlay
             loop
@@ -87,21 +87,22 @@ export default function Products() {
             playsInline
             controls={false}
             poster="/images/AdobeStock_273577993.jpeg"
-            className="w-full h-full object-cover opacity-50"
+            className="w-full h-full object-cover"
+            onLoadStart={() => console.log('Video load started')}
+            onLoadedData={() => console.log('Video data loaded')}
+            onPlay={() => console.log('Video started playing')}
             onError={(e) => {
               console.error('Video error:', e);
               const video = e.target as HTMLVideoElement;
               console.log('Video error code:', video.error?.code);
               console.log('Video error message:', video.error?.message);
+              console.log('Video current src:', video.currentSrc);
             }}
           >
             <source 
-              src="/images/AdobeStock_688777865.mp4"
+              src="/images/AdobeStock_688777865-compressed.mp4"
               type="video/mp4"
-            />
-            <source 
-              src="/images/AdobeStock_679597740.mov"
-              type="video/quicktime"
+              onError={(e) => console.error('Source 1 error:', e)}
             />
             Your browser does not support the video tag.
           </video>

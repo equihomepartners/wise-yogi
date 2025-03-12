@@ -16,19 +16,22 @@ const AnimatedSections = () => {
             playsInline
             controls={false}
             className="w-full h-full object-cover"
-            onError={(e) => console.error('Video error:', e)}
+            poster="/images/AdobeStock_273577993.jpeg"
+            onLoadStart={() => console.log('Video load started')}
+            onLoadedData={() => console.log('Video data loaded')}
+            onPlay={() => console.log('Video started playing')}
+            onError={(e) => {
+              console.error('Video error:', e);
+              const video = e.target as HTMLVideoElement;
+              console.log('Video error code:', video.error?.code);
+              console.log('Video error message:', video.error?.message);
+              console.log('Video current src:', video.currentSrc);
+            }}
           >
             <source 
-              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
-              type="video/mov"
-            />
-            <source 
-              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
-              type="video/quicktime"
-            />
-            <source 
-              src="https://api.netlify.com/api/v1/sites/440a91a3-adf0-40b3-9f3b-9c28c5420d4f/blobs/videos/AdobeStock_679597740.mov" 
+              src="/images/AdobeStock_679597740-compressed.mp4"
               type="video/mp4"
+              onError={(e) => console.error('Source error:', e)}
             />
             Your browser does not support the video tag.
           </video>
