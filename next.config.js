@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,5 +12,10 @@ const nextConfig = {
     NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   }
 };
+
+// Only use export for production builds
+if (process.env.NODE_ENV === 'production') {
+  nextConfig.output = 'export';
+}
 
 module.exports = nextConfig;

@@ -10,6 +10,7 @@ A modern, responsive website for Wise Yogi, celebrating mindful living and susta
 - Mobile-friendly navigation
 - SEO optimized
 - Tailwind CSS for styling
+- Cloudinary video integration
 
 ## Getting Started
 
@@ -17,6 +18,7 @@ A modern, responsive website for Wise Yogi, celebrating mindful living and susta
 
 - Node.js 18.17 or later
 - npm (comes with Node.js)
+- Cloudinary account
 
 ### Installation
 
@@ -35,12 +37,27 @@ cd wise-yogi
 npm install
 ```
 
-4. Start the development server:
+4. Create a `.env.local` file in the root directory and add your Cloudinary configuration:
+```bash
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name_here
+```
+
+5. Start the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Important Notes for Local Development
+
+- The project uses Cloudinary for video hosting. Make sure your `.env.local` file has the correct `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`.
+- When running locally, the project will use server-side rendering for better development experience.
+- Production builds will use static export (`output: 'export'`), but this is handled automatically.
+- If videos don't load, verify that:
+  - Your Cloudinary cloud name is correct
+  - The video public IDs match exactly with what's in your Cloudinary Media Library
+  - The videos are publicly accessible in your Cloudinary account
 
 ## Project Structure
 
@@ -57,6 +74,7 @@ npm run dev
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Framer Motion](https://www.framer.com/motion/) - Animation library
 - [Hero Icons](https://heroicons.com/) - Beautiful hand-crafted SVG icons
+- [Cloudinary](https://cloudinary.com/) - Cloud-based video and image management
 
 ## Development
 

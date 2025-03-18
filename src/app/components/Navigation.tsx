@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const menuItems = [
+  { name: 'About Us', href: '/about' },
   { name: 'Shop Now', href: '/products' }
 ];
 
@@ -23,27 +24,31 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-3">
               <Image
                 src="/wise-yogi.jpeg"
                 alt="Wise Yogi Logo"
-                width={40}
-                height={40}
+                width={64}
+                height={64}
                 className="rounded-full"
               />
-              <span className="text-2xl font-serif font-medium text-primary-800 hover:text-primary-700 transition-colors">
+              <span className="text-3xl font-serif font-bold text-primary-800 hover:text-primary-700 transition-colors">
                 Wise Yogi
               </span>
             </Link>
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="bg-[#2F4F2F] text-white px-6 py-2 rounded-lg hover:bg-[#1F3F1F] transition-colors duration-300"
+                className={`px-6 py-2 rounded-lg transition-all duration-300 ${
+                  item.name === 'Shop Now'
+                    ? 'bg-[#2F4F2F] text-white hover:bg-[#1F3F1F]'
+                    : 'text-[#2F4F2F] hover:bg-sage-50'
+                }`}
               >
                 {item.name}
               </Link>
@@ -51,7 +56,13 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-6">
+            <Link
+              href="/about"
+              className="text-[#2F4F2F] hover:text-[#1F3F1F] transition-colors duration-300"
+            >
+              About Us
+            </Link>
             <Link
               href="/products"
               className="bg-[#2F4F2F] text-white px-6 py-2 rounded-lg hover:bg-[#1F3F1F] transition-colors duration-300"
