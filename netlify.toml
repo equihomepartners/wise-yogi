@@ -1,3 +1,8 @@
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
+
 [[headers]]
   for = "/images/*"
   [headers.values]
