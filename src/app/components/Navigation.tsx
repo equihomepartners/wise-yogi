@@ -8,6 +8,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const menuItems = [
   { name: 'About Us', href: '/about' },
+  { name: 'Meet the Farmers', href: '#', comingSoon: true },
+  { name: 'Blog', href: '#', comingSoon: true },
   { name: 'Shop Now', href: '/products' }
 ];
 
@@ -47,8 +49,11 @@ const Navigation = () => {
                 className={`px-6 py-2 rounded-lg transition-all duration-300 ${
                   item.name === 'Shop Now'
                     ? 'bg-[#2F4F2F] text-white hover:bg-[#1F3F1F]'
+                    : item.comingSoon
+                    ? 'text-[#2F4F2F]/50 cursor-not-allowed'
                     : 'text-[#2F4F2F] hover:bg-sage-50'
                 }`}
+                onClick={(e) => item.comingSoon && e.preventDefault()}
               >
                 {item.name}
               </Link>
@@ -57,18 +62,22 @@ const Navigation = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-6">
-            <Link
-              href="/about"
-              className="text-[#2F4F2F] hover:text-[#1F3F1F] transition-colors duration-300"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/products"
-              className="bg-[#2F4F2F] text-white px-6 py-2 rounded-lg hover:bg-[#1F3F1F] transition-colors duration-300"
-            >
-              Shop Now
-            </Link>
+            {menuItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`${
+                  item.name === 'Shop Now'
+                    ? 'bg-[#2F4F2F] text-white px-6 py-2 rounded-lg hover:bg-[#1F3F1F]'
+                    : item.comingSoon
+                    ? 'text-[#2F4F2F]/50 cursor-not-allowed'
+                    : 'text-[#2F4F2F] hover:text-[#1F3F1F]'
+                } transition-colors duration-300`}
+                onClick={(e) => item.comingSoon && e.preventDefault()}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -93,8 +102,15 @@ const Navigation = () => {
                 >
                   <Link
                     href={item.href}
-                    className="block px-3 py-2 text-gray-600 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors duration-300"
-                    onClick={() => setIsOpen(false)}
+                    className={`block px-3 py-2 rounded-lg transition-colors duration-300 ${
+                      item.comingSoon
+                        ? 'text-[#2F4F2F]/50 cursor-not-allowed'
+                        : 'text-[#2F4F2F] hover:bg-sage-50'
+                    }`}
+                    onClick={(e) => {
+                      setIsOpen(false);
+                      item.comingSoon && e.preventDefault();
+                    }}
                   >
                     {item.name}
                   </Link>

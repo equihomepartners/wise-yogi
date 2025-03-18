@@ -8,9 +8,37 @@ import 'next-cloudinary/dist/cld-video-player.css';
 
 const AnimatedSections = () => {
   const [showFarmerForm, setShowFarmerForm] = useState(false);
+  const [email, setEmail] = useState('');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const handlePartnerClick = () => {
     setShowFarmerForm(true);
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      // Send email to srilu11@gmail.com
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, adminEmail: 'srilu11@gmail.com' }),
+      });
+
+      // Show thank you message
+      setShowThankYou(true);
+      setEmail('');
+
+      // Hide thank you message after 5 seconds
+      setTimeout(() => {
+        setShowThankYou(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Error subscribing:', error);
+    }
   };
 
   return (
@@ -559,23 +587,23 @@ const AnimatedSections = () => {
                   <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <h4 className="text-2xl font-serif text-[#2F4F2F] mb-4">Shop Mindfully</h4>
                     <p className="text-[#4A644A] mb-6">Purchase from sustainable sources that support local communities and preserve traditional farming methods.</p>
-                    <button className="bg-[#2F4F2F] text-white px-6 py-3 rounded-lg hover:bg-[#1F3F1F] transition-colors w-full">
+                    <Link href="/products" className="bg-[#2F4F2F] text-white px-6 py-3 rounded-lg hover:bg-[#1F3F1F] transition-colors w-full inline-block text-center">
                       Shop Now
-                    </button>
+                    </Link>
                   </div>
                   <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <h4 className="text-2xl font-serif text-[#2F4F2F] mb-4">Support Farmers</h4>
                     <p className="text-[#4A644A] mb-6">Your choices directly impact farming communities and their livelihoods, helping preserve traditional wisdom.</p>
-                    <button className="bg-[#4A644A] text-white px-6 py-3 rounded-lg hover:bg-[#3A533A] transition-colors w-full">
-                      Meet the Farmers
+                    <button disabled className="bg-gray-400 text-white px-6 py-3 rounded-lg w-full cursor-not-allowed">
+                      Meet the Farmers (Coming Soon)
                     </button>
                   </div>
                   <div className="bg-white/90 backdrop-blur-sm p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                     <h4 className="text-2xl font-serif text-[#2F4F2F] mb-4">Spread Awareness</h4>
                     <p className="text-[#4A644A] mb-6">Share the message of gratitude and sustainability with others, helping grow our mindful community.</p>
-                    <button className="border-2 border-[#2F4F2F] text-[#2F4F2F] px-6 py-3 rounded-lg hover:bg-[#2F4F2F] hover:text-white transition-colors w-full">
+                    <a href="#newsletter" className="border-2 border-[#2F4F2F] text-[#2F4F2F] px-6 py-3 rounded-lg hover:bg-[#2F4F2F] hover:text-white transition-colors w-full inline-block text-center">
                       Join Our Community
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -630,7 +658,7 @@ const AnimatedSections = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="relative min-h-[60vh] flex items-center">
+      <section id="newsletter" className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
           <Image
             src="/images/AdobeStock_273577993.jpeg"
@@ -649,16 +677,26 @@ const AnimatedSections = () => {
             <p className="text-xl text-white/90 mb-12">
               Subscribe to receive mindful living tips, traditional recipes, and updates on our farmer communities.
             </p>
-            <form className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-lg bg-white/90 backdrop-blur-sm text-[#2F4F2F] placeholder-[#2F4F2F]/60 focus:outline-none focus:ring-2 focus:ring-[#2F4F2F]"
-              />
-              <button className="bg-[#2F4F2F] text-white px-8 py-4 rounded-lg hover:bg-[#1F3F1F] transition-colors duration-300">
-                Subscribe
-              </button>
-            </form>
+            {showThankYou ? (
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg p-8 mb-8 animate-fade-in">
+                <h3 className="text-2xl font-serif text-[#2F4F2F] mb-2">Thank You for Joining Our Community!</h3>
+                <p className="text-[#4A644A]">We're excited to share our journey with you.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="flex-1 px-6 py-4 rounded-lg bg-white/90 backdrop-blur-sm text-[#2F4F2F] placeholder-[#2F4F2F]/60 focus:outline-none focus:ring-2 focus:ring-[#2F4F2F]"
+                />
+                <button type="submit" className="bg-[#2F4F2F] text-white px-8 py-4 rounded-lg hover:bg-[#1F3F1F] transition-colors duration-300">
+                  Subscribe
+                </button>
+              </form>
+            )}
             <p className="text-white/80 text-sm mt-4">
               By subscribing, you agree to receive our newsletter. You can unsubscribe at any time.
             </p>
